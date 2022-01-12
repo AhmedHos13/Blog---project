@@ -1,0 +1,68 @@
+<div class="img fixed-top"></div>
+<div class="my-3 container bg-light d-flex justify-content-center">
+  <h3 class="p-3 opacity-75">Welcome To Daily Posts</h3>
+</div>
+<div class="container d-flex justify-content-center" *ngIf="!isPageLoaded">
+  <h4 class="red-color">Loading ....</h4>
+</div>
+
+<div *ngIf="isPageLoaded" class="container py-5">
+  <div class="row gy-4">
+    <div
+      class="col-sm-6"
+      *ngFor="
+        let blog of blogs | paginate: { itemsPerPage: 4, currentPage: p };
+        let currentIndex = index
+      "
+    >
+      <div class="card my-color">
+        <div class="card-body">
+          <h4 class="card-title">{{ blog.title }}</h4>
+          <p class="card-text">
+            {{ blog.content }}
+          </p>
+          <p class="card-author">
+            <span>Posted By </span>
+            <span class="author">{{
+              blog.author.firstName + " " + blog.author.lastName
+            }}</span>
+            <span class="font-size text-muted"> at {{ blog.createdAt }}</span>
+            <span> last updated </span
+            ><span class="font-size text-muted">at {{ blog.updatedAt }}</span>
+          </p>
+          <input
+            *ngIf="isloggedIn"
+            class="btn btn-info bg-info"
+            type="button"
+            value="Edit"
+            routerLink="/edit/{{ blog._id }}"
+            [disabled]="blog.author.email != parseJwt()"
+          />
+          <input
+            *ngIf="isloggedIn"
+            [disabled]="blog.isBlogDeleted"
+            class="mx-4 btn btn-danger bg-danger"
+            type="button"
+            value="delete"
+            (click)="remove(currentIndex)"
+            [disabled]="blog.author.email != parseJwt()"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  *ngIf="isPageLoaded && !blogs.length"
+  class="container d-flex justify-content-center"
+>
+  <h4 class="red-color">There is not any blogs yet !</h4>
+</div>
+<div class="container d-flex justify-content-end">
+  <pagination-controls
+    *ngIf="isPageLoaded && blogs.length"
+    (pageChange)="p = $event"
+    class="float-right"
+  >
+  </pagination-controls>
+</div>

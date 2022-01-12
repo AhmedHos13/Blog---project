@@ -1,0 +1,157 @@
+<div class="img fixed-top"></div>
+
+<div class="container col-4 my-5">
+  <div class="p-4 bg-secondary bg-opacity-50">
+    <h3 class="text-center font-monospace bg-gradient">Register now !</h3>
+    <form [formGroup]="formRegister">
+      <div class="mb-3">
+        <label for="exampleInputfirstname" class="form-label"
+          >First name : <span class="red-color">*</span></label
+        >
+        <input
+          #inputfirstName
+          type="text"
+          class="form-control"
+          id="exampleInputfirstname"
+          aria-describedby="name"
+          placeholder="ex: Ahmed"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputsecondname" class="form-label"
+          >Second name :<span class="red-color">*</span></label
+        >
+        <input
+          #inputlastName
+          type="text"
+          class="form-control"
+          id="exampleInputsecondname"
+          aria-describedby="name"
+          placeholder="ex: Hossam"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputusername" class="form-label"
+          >Username :<span class="red-color">*</span></label
+        >
+        <input
+          #inputusername
+          [class.is-invalid]="!isValidUsername() && this.formRegister.touched"
+          [class.is-valid]="isValidUsername() && this.formRegister.touched"
+          formControlName="Username"
+          type="text"
+          class="form-control"
+          id="exampleInputusername"
+          aria-describedby="name"
+          placeholder="ex: Ahmhos13"
+        />
+      </div>
+      <div
+        class="d-flex red-color"
+        *ngIf="
+          formRegister.controls['Username'].errors && this.formRegister.touched
+        "
+      >
+        <p *ngIf="formRegister.controls['Username'].errors['required']">
+          required username !
+        </p>
+        <p *ngIf="formRegister.controls['Username'].errors['minlength']">
+          min length is 3 characters !
+        </p>
+        <p *ngIf="formRegister.controls['Username'].errors['maxlength']">
+          max length is 20 characters !
+        </p>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label"
+          >Email address :<span class="red-color">*</span></label
+        >
+        <input
+          #inputemail
+          [class.is-invalid]="!isValidEmail() && this.formRegister.touched"
+          [class.is-valid]="isValidEmail() && this.formRegister.touched"
+          formControlName="Email"
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="mail@example.com"
+        />
+      </div>
+
+      <div
+        class="d-flex red-color"
+        *ngIf="
+          formRegister.controls['Email'].errors && this.formRegister.touched
+        "
+      >
+        <p *ngIf="formRegister.controls['Email'].errors['required']">
+          required E-mail !
+        </p>
+        <p *ngIf="formRegister.controls['Email'].errors['minlength']">
+          min length is 3 characters !
+        </p>
+        <p *ngIf="formRegister.controls['Email'].errors['maxlength']">
+          max length is 20 characters !
+        </p>
+        <p *ngIf="formRegister.controls['Email'].errors['email']">
+          '@' character is required !
+        </p>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label"
+          >Password :  <span class="red-color">*</span></label
+        >
+        <input
+          #inputpassword
+          formControlName="Password"
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          [class.is-invalid]="!isValidPassword() && this.formRegister.touched"
+          [class.is-valid]="isValidPassword() && this.formRegister.touched"
+          placeholder="Enter strong password !"
+        />
+      </div>
+
+      <div
+        class="d-flex red-color"
+        *ngIf="
+          formRegister.controls['Password'].errors && this.formRegister.touched
+        "
+      >
+        <p *ngIf="formRegister.controls['Password'].errors['required']">
+          required Password !
+        </p>
+        <p *ngIf="formRegister.controls['Password'].errors['minlength']">
+          min length is 3 characters !
+        </p>
+        <p *ngIf="formRegister.controls['Password'].errors['maxlength']">
+          max length is 20 characters !
+        </p>
+      </div>
+
+      <button
+        [disabled]="formRegister.invalid"
+        [disabled]=""
+        type="button"
+        class="btn btn-primary"
+        (click)="
+          register(
+            inputfirstName.value,
+            inputlastName.value,
+            inputusername.value,
+            inputemail.value,
+            inputpassword.value
+          )
+        "
+      >
+        Register
+      </button>
+    </form>
+  </div>
+</div>

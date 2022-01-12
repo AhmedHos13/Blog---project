@@ -1,0 +1,9 @@
+.img {
+    background: url("../imgs/edit.jpg") no-repeat center center/cover;
+    height: 100vh;
+    background-position: top;
+    background-blend-mode: multiply;
+    background-color: rgba(56, 56, 56, 0.582);
+    /* position: fixed; */
+    z-index: -999;
+  }

@@ -1,0 +1,10 @@
+.img {
+  background: url("../imgs/register.jpg") no-repeat center
+    center/cover;
+  height: 100vh;
+  background-position: top;
+  background-blend-mode: multiply;
+  background-color: rgba(158, 158, 158, 0.226);
+  /* position: fixed; */
+  z-index: -999;
+}

@@ -1,0 +1,69 @@
+<div class="img fixed-top"></div>
+<div class="container col-4 my-5">
+  <div class="p-4 bg-secondary bg-opacity-25">
+    <h3 class="text-center font-monospace bg-gradient">Login now !</h3>
+    <form [formGroup]="formLogin">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label"
+          >Email address :<span class="red-color">*</span></label
+        >
+        <input
+          #inputemail
+          [class.is-invalid]="!isValidEmail() && this.formLogin.touched"
+          [class.is-valid]="isValidEmail() && this.formLogin.touched"
+          formControlName="Email"
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="mail@example.com"
+        />
+      </div>
+
+      <div
+        class="d-flex red-color"
+        *ngIf="formLogin.controls['Email'].errors && this.formLogin.touched"
+      >
+        <p *ngIf="formLogin.controls['Email'].errors['required']">
+          required E-mail !
+        </p>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label"
+          >Password : <span class="red-color">*</span></label
+        >
+        <input
+          #inputpassword
+          formControlName="Password"
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          [class.is-invalid]="!isValidPassword() && this.formLogin.touched"
+          placeholder="Enter your password !"
+        />
+      </div>
+      <div
+        class="d-flex red-color"
+        *ngIf="formLogin.controls['Password'].errors && this.formLogin.touched"
+      >
+        <p *ngIf="formLogin.controls['Password'].errors['required']">
+          required Password !
+        </p>
+      </div>
+      <div *ngIf="!isRegistered() && !isValidUser">
+        <p class="red-color">Incorrect e-mail or password !</p>
+      </div>
+
+      <button
+        [disabled]="formLogin.invalid"
+        type="button"
+        class="btn btn-primary"
+        (click)="login(inputemail.value, inputpassword.value)"
+        [disabled]="isBeaingLogin"
+      >
+        Login
+      </button>
+    </form>
+  </div>
+</div>

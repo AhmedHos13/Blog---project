@@ -1,0 +1,28 @@
+<div class="img fixed-top"></div>
+<div class="container py-5">
+  <h3 class="my-color width-fit p-2">Edit Your Blog</h3>
+  <div class="row gy-4">
+    <div class="col-sm-6">
+      <div class="card my-color">
+        <div class="card-body">
+          <input type="text" class="form-control bg-opacity-10 bg-danger w-25" [(ngModel)]="blog.title" />
+          <br />
+          <textarea
+            #inputcontent
+            id="form24"
+            type="text"
+            class="md-textarea form-control bg-opacity-10 bg-danger"
+            rows="4"
+            [(ngModel)]="blog.content"
+          ></textarea>
+          <input
+            class="btn btn-info bg-info my-4"
+            type="button"
+            value="Edit"
+            (click)="update()"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

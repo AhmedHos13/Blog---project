@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,600&display=swap");
+
+.card-title {
+  text-transform: uppercase;
+  font-family: "Josefin Sans", sans-serif;
+}
+.card-text {
+  font-family: "Poppins", sans-serif;
+}
+
+span {
+  font-family: "Poppins", sans-serif;
+}
+.red-color {
+  color: red;
+}
+nav {
+  background-color: antiquewhite;
+}
+footer {
+  background-color: antiquewhite;
+}
+
+.font-size {
+  font-size: 13px;
+}
+.my-color {
+  background-color: #faebd7a9;
+}
+.width-fit {
+  width: fit-content;
+}
+.author {
+  color: crimson;
+}
+.fa {
+  font-size: 25px;
+  color: #111111;
+  text-decoration: none;
+}
+.white-color {
+  color: #ffffff;
+}
+footer {
+  margin-top: 160px;
+}
